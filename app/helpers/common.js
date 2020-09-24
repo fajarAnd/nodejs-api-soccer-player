@@ -3,6 +3,9 @@ const isNil = require('lodash/isNil');
 const isObject = require('lodash/isObject');
 const result = require('lodash/result');
 const camelCase = require('lodash/camelCase');
+const isNull = require('lodash/isNull');
+const isNumber = require('lodash/isNumber');
+const toNumber = require('lodash/toNumber');
 const fs = require('fs');
 const path = require('path');
 
@@ -84,6 +87,27 @@ exports.loadFile = (dirname, basename) => {
       load[filename] = require(pathFile);
     });
   return load;
+};
+
+exports.paging = ({ page = 1, limit = 10 }) => {
+  if (page === 0 || isNull(page) || page === '') {
+    // eslint-disable-next-line no-param-reassign
+    page = 1;
+  }
+
+  if (isNull(limit) || limit === '') {
+    // eslint-disable-next-line no-param-reassign
+    limit = 10;
+  }
+
+  const getPage = isNumber(page) ? page : toNumber(page);
+  const getLimit = isNumber(limit) ? limit : toNumber(limit);
+
+  return {
+    page,
+    limit: getLimit,
+    offset: Math.abs(((getPage - 1) * getLimit)),
+  };
 };
 
 module.exports = exports;
