@@ -8,7 +8,9 @@
     "start-dev": "./node_modules/.bin/nodemon app/server.js",
     "eslint-fix": "./node_modules/.bin/eslint --fix .",
     "test": "./node_modules/mocha/bin/mocha --exit --reporter spec --timeout 12000 test/*.js",
-    "migrate": "sequelize db:migrate --config=./app/db/datasource/mysql.js"
+    "migrate": "sequelize db:migrate --config=./app/db/datasource/mysql.js",
+    "seed-positions": "./node_modules/.bin/sequelize db:seed --seed 01-seed-table-positions.js --seeders-path=app/db/seeds --config=./app/db/datasource/mysql.js --debug"
+
   },
   "keywords": [
     "express"
