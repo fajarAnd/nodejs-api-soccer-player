@@ -1,7 +1,5 @@
 {
   "PORT": "__PORT__",
-  "MONGO_DB": "__MONGO_DB__",
-  "MONGO_DB_TEST": "__MONGO_DB_TEST__",
 
   "SERVICE_NAME": "__SERVICE_NAME__",
   "basic-auth-credential": {
@@ -13,13 +11,5 @@
     "title": "Api Doc",
     "version": "2.0"
   },
-  "LOG_DIR": "__LOG_DIR__",
-
-  "REDIS": {
-    "host": "__Host_Redis__",
-    "port": "__Port_Redis__",
-    "db": "__Database_Redis__",
-    "auth_pass": "__Auth_Pass__"
-  },
-  "HOST_SVC_AUDIT_TRAIL": "__HOST_SVC_AUDIT_TRAIL__"
+  "LOG_DIR": "__LOG_DIR__"
 }

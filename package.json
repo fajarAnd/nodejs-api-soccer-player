@@ -7,7 +7,8 @@
     "start": "node app/server.js",
     "start-dev": "./node_modules/.bin/nodemon app/server.js",
     "eslint-fix": "./node_modules/.bin/eslint --fix .",
-    "test": "./node_modules/mocha/bin/mocha --exit --reporter spec --timeout 12000 test/*.js"
+    "test": "./node_modules/mocha/bin/mocha --exit --reporter spec --timeout 12000 test/*.js",
+    "migrate": "sequelize db:migrate --config=./app/db/datasource/mysql.js"
   },
   "keywords": [
     "express"
@@ -38,7 +39,12 @@
     "swagger-ui-express": "^4.0.1",
     "winston": "^2.4.1",
     "winston-daily-rotate-file": "^3.4.1",
-    "eslint-config-airbnb-base": "^13.1.0"
+    "eslint-config-airbnb-base": "^13.1.0",
+    "sequelize": "^5.21.1",
+    "sequelize-cli": "^6.2.0",
+    "sequelize-paginate": "^1.1.6",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -54,6 +60,8 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.14.3",
     "stylelint": "^9.10.1",
-    "supertest": "^3.4.2"
+    "supertest": "^3.4.2",
+    "sequelize-auto": "^0.4.29",
+    "sinon": "^9.0.2"
   }
 }
