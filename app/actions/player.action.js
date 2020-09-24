@@ -12,7 +12,7 @@ const createPlayer = R.pipe(
   R.applySpec({
     positionCode: R.prop('positionCode'),
     fullName: R.path(['fullName']),
-    dob: R.pipe(R.path(['dob']), formattingGeneralDate, R.tap(console.log)),
+    dob: R.pipe(R.path(['dob']), formattingGeneralDate),
     nationality: R.path(['nationality']),
     height: R.path(['height']),
     weight: R.path(['weight']),

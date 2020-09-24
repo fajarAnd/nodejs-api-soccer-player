@@ -1,5 +1,5 @@
 const R = require('ramda');
-const { team } = require('../db/models/mysql');
+const { team, teamSlot } = require('../db/models/mysql');
 const { paginate } = require('./common-query.action');
 
 const getAllTeam = R.pipe(
@@ -14,7 +14,20 @@ const createTeam = R.pipe(
   }),
   payload => team.create(payload),
 );
+
+const getTeamSlot = R.pipe(
+  R.applySpec({
+    where: {
+      teamId: R.prop('teamId'),
+      positionCode: R.prop('positionCode'),
+      playerType: R.prop('playerType'),
+    },
+    raw: R.T,
+  }),
+  query => teamSlot.findOne(query),
+);
 module.exports = {
   getAllTeam,
   createTeam,
+  getTeamSlot,
 };
