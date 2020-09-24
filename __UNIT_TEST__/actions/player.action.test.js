@@ -29,4 +29,24 @@ describe('Unit Test Player Action', () => {
       }
     });
   });
+
+  describe('Update Player', () => {
+    it('Update Player team', async () => {
+      try {
+        const payload = {
+          playerId: 1,
+          teamId: 1,
+        };
+        const stub = sandbox.stub(player, 'update');
+        const successUpdated = [1];
+
+        stub.withArgs({ teamId: payload.teamId }, { where: { playerId: payload.playerId } })
+          .resolves(successUpdated);
+        const result = await playerAction.updatePlayerByPk(payload);
+        assert.equal(successUpdated, result);
+      } catch (e) {
+        assert.ifError(e);
+      }
+    });
+  });
 });

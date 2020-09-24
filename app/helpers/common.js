@@ -6,6 +6,7 @@ const camelCase = require('lodash/camelCase');
 const isNull = require('lodash/isNull');
 const isNumber = require('lodash/isNumber');
 const toNumber = require('lodash/toNumber');
+const forIn = require('lodash/forIn');
 const fs = require('fs');
 const path = require('path');
 
@@ -108,6 +109,16 @@ exports.paging = ({ page = 1, limit = 10 }) => {
     limit: getLimit,
     offset: Math.abs(((getPage - 1) * getLimit)),
   };
+};
+
+exports.sanitizeProp = (obj) => {
+  const sanitization = obj;
+  forIn(obj, (val, key) => {
+    if (!val) {
+      delete sanitization[key];
+    }
+  });
+  return sanitization;
 };
 
 module.exports = exports;
