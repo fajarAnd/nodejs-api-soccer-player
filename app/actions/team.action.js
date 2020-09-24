@@ -26,8 +26,18 @@ const getTeamSlot = R.pipe(
   }),
   query => teamSlot.findOne(query),
 );
+
+const createTeamSlot = R.pipe(
+  R.applySpec({
+    teamId: R.prop('teamId'),
+    positionCode: R.prop('positionCode'),
+    playerType: R.prop('playerType'),
+  }),
+  payload => teamSlot.create(payload),
+);
 module.exports = {
   getAllTeam,
   createTeam,
   getTeamSlot,
+  createTeamSlot,
 };

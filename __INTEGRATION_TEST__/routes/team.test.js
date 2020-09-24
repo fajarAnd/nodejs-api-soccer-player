@@ -38,4 +38,24 @@ describe('Team Integration Test / Endpoint', () => {
       }
     });
   });
+
+  describe('POST /v1/team/enlist/player', () => {
+    it('should be Success Create Team', async () => {
+      try {
+        const payload = {
+          playerId: '1',
+          playerType: 'main',
+          teamId: '1',
+        };
+        const result = await server
+          .post('/v1/team/enlist/player')
+          .send(payload)
+          .expect('Content-type', /json/);
+
+        assert.isDefined(result.body.data);
+      } catch (e) {
+        assert.ifError(e);
+      }
+    });
+  });
 });
