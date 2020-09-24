@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
 			field: 'dob'
 		},
 		nationality: {
-			type: DataTypes.DATE,
+			type: DataTypes.STRING(255),
 			allowNull: true,
 			field: 'nationality'
 		},

@@ -37,7 +37,7 @@ module.exports = {
     },
     nationality: {
       allowNull: true,
-      type: Sequelize.DATE,
+      type: Sequelize.STRING,
     },
     height: {
       allowNull: false,

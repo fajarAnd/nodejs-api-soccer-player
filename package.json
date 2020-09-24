@@ -33,6 +33,7 @@
     "express-winston": "^3.0.1",
     "extend": "^3.0.2",
     "lodash": "^4.17.11",
+    "moment": "^2.29.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "nconf": "^0.10.0",

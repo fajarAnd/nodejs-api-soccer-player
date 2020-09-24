@@ -19,6 +19,22 @@ const getAllPlayers = async (req, res) => {
   }
 };
 
+const createPlayer = async (req, res) => {
+  const { requestId, body } = req;
+  try {
+    const result = await playerAction.createPlayer(body);
+    return Helpers.response(res, result);
+  } catch (error) {
+    logger.error({
+      requestId,
+      data: error,
+      description: 'Error on Catch createPlayer',
+    });
+    return Helpers.error(res, error);
+  }
+};
+
 module.exports = {
   getAllPlayers,
+  createPlayer,
 };

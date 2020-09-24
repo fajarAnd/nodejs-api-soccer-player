@@ -20,9 +20,8 @@ const getAllTeam = async (req, res) => {
 };
 
 const createTeam = async (req, res) => {
-  const { requestId } = req;
+  const { requestId, body } = req;
   try {
-    const { body } = req;
     const result = await teamAction.createTeam(body);
     return Helpers.response(res, result);
   } catch (error) {
