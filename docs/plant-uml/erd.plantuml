@@ -1,0 +1,72 @@
+@startuml erd
+
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+' skinparam linetype ortho
+
+entity "team" as team {
+  *team_id : int <<generated>>
+  --
+  *name : varchar
+  description : varchar
+  created_at: date
+  updated_at: date
+}
+
+entity "team_slot" as team_slot {
+  *team_slot_id : int <<generated>>
+  --
+  *team_id : int <<FK>>
+  ' *rule_team_slot_id: int <<FK>> 
+  player_code : varchar
+  player_type: enum [main, subtitute]
+  created_at: date
+  updated_at: date
+}
+
+' entity "rule_team_slot" as rule_team_slot {
+'   *rule_id : int <<generated>>
+'   --
+'   rule_name : varchar
+'   description: varchar
+'   type_player: enum [main, subtitute]
+'   max_player: int
+'   is_active: tinyInt
+'   created_at: date
+'   updated_at: date
+' }
+
+entity "player" as player {
+  *player_id : int <<generated>>
+  --
+  *team_id : int <<FK>>
+  *position_code: varchar <<FK>>
+  fullname : varchar
+  dob: date
+  nationality: varchar
+  height: int
+  weight: int
+  created_at: date
+  updated_at: date
+}
+
+entity "position" as position {
+  *position_code: varchar
+  --
+  name : varchar
+  description: varchar
+  created_at: date
+  updated_at: date
+}
+
+team ||..o{ player
+player ||..|{ position
+
+team |o..o{ team_slot
+' rule_team_slot ||..o{ team_slot
+
+
+
+@enduml
