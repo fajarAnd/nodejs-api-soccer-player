@@ -30,7 +30,7 @@ module.exports = {
     player_type: {
       allowNull: false,
       type: Sequelize.ENUM('main', 'substitute'),
-      defaultValue: 'main'
+      defaultValue: 'main',
     },
     created_at: {
       type: Sequelize.DATE,
