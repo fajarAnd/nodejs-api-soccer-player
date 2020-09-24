@@ -8,7 +8,7 @@ module.exports = {
       type: Sequelize.INTEGER,
     },
     team_id: {
-      allowNull: false,
+      allowNull: true,
       type: Sequelize.INTEGER,
       references: {
         model: {

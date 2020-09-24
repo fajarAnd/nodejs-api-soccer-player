@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 		},
 		teamId: {
 			type: DataTypes.INTEGER(11),
-			allowNull: false,
+			allowNull: true,
 			references: {
 				model: 'team',
 				key: 'team_id'
