@@ -1,4 +1,5 @@
 const R = require('ramda');
+const { paging } = require('../helpers/common');
 
 const paginateQuery = R.applySpec({
   limit: R.prop('limit'),
@@ -7,5 +8,8 @@ const paginateQuery = R.applySpec({
 });
 
 module.exports = {
-  paginateQuery,
+  paginate: R.pipe(
+    paging,
+    paginateQuery,
+  ),
 };

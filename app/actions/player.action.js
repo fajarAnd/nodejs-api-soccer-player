@@ -1,13 +1,11 @@
 const R = require('ramda');
-const { position } = require('../db/models/mysql');
-const { paging } = require('../helpers/common');
-const { paginateQuery } = require('./common-query.action');
+const { player } = require('../db/models/mysql');
+const { paginate } = require('./common-query.action');
 
-const getAllPosition = R.pipe(
-  paging,
-  paginateQuery,
-  query => position.findAndCountAll(query),
+const getAllPlayer = R.pipe(
+  paginate,
+  query => player.findAndCountAll(query),
 );
 module.exports = {
-  getAllPosition,
+  getAllPlayer,
 };
