@@ -19,7 +19,11 @@ const createPlayer = R.pipe(
   }),
   payload => player.create(payload),
 );
+
+const getDetailPlayer = playerId => player.findByPk(playerId, { raw: true });
+
 module.exports = {
   getAllPlayer,
   createPlayer,
+  getDetailPlayer,
 };
