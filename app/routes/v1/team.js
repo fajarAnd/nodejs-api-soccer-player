@@ -41,5 +41,6 @@ const enlistPlayerIntoTeamPayloadChecker = async (req, res, next) => {
 module.exports = (router) => {
   router.get('/', teamController.getAllTeam);
   router.post('/', createTeamPayloadChecker, teamController.createTeam);
+  router.get('/:teamId', teamController.getTeamIncludePlayer);
   router.post('/enlist/player', enlistPlayerIntoTeamPayloadChecker, teamController.enlistPlayerIntoTeam);
 };

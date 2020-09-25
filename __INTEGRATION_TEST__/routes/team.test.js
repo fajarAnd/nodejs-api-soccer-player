@@ -58,4 +58,20 @@ describe('Team Integration Test / Endpoint', () => {
       }
     });
   });
+
+  describe('GET /v1/team/:teamId', () => {
+    it('Return Team including player', async () => {
+      try {
+        const teamId = 1;
+        const result = await server
+          .get(`/v1/team/${teamId}`)
+          .expect('Content-type', /json/);
+
+        assert.isDefined(result.body.data);
+        assert.isDefined(result.body.data.players);
+      } catch (e) {
+        assert.ifError(e);
+      }
+    });
+  });
 });

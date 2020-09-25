@@ -90,8 +90,25 @@ const enlistPlayerIntoTeam = async (req, res) => {
   }
 };
 
+const getTeamIncludePlayer = async (req, res) => {
+  const { requestId } = req;
+  try {
+    const { teamId } = req.params;
+    const result = await teamAction.getTeamIncludePlayer({ teamId });
+    return Helpers.response(res, result);
+  } catch (error) {
+    logger.error({
+      requestId,
+      data: error,
+      description: 'Error on Catch createTeam',
+    });
+    return Helpers.error(res, error);
+  }
+};
+
 module.exports = {
   getAllTeam,
   createTeam,
   enlistPlayerIntoTeam,
+  getTeamIncludePlayer,
 };
