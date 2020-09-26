@@ -1,15 +1,13 @@
 {
   "PORT": "__PORT__",
 
-  "SERVICE_NAME": "__SERVICE_NAME__",
-  "basic-auth-credential": {
-    "name": "__basic-auth-credential.name__",
-    "pass": "__basic-auth-credential.pass__"
-  },
+  "DB_DIALECT": "mysql",
+  "DB_NAME": "soccer",
+  "DB_USER": "__DB_USER__",
+  "DB_PASS": "__DB_PASS__",
+  "DB_URL": "__DB_URL__",
+  "DB_PORT": "__DB_PORT__",
 
-  "swagger": {
-    "title": "Api Doc",
-    "version": "2.0"
-  },
-  "LOG_DIR": "__LOG_DIR__"
+  "SERVICE_NAME": "nodejs-api-soccer-player",
+  "LOG_DIR": "log"
 }

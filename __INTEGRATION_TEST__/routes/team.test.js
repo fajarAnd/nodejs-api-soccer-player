@@ -40,7 +40,7 @@ describe('Team Integration Test / Endpoint', () => {
   });
 
   describe('POST /v1/team/enlist/player', () => {
-    it('should be Success Create Team', async () => {
+    it('UnAvailable position when Adding player into team', async () => {
       try {
         const payload = {
           playerId: '1',
@@ -52,7 +52,7 @@ describe('Team Integration Test / Endpoint', () => {
           .send(payload)
           .expect('Content-type', /json/);
 
-        assert.isDefined(result.body.data);
+        assert.equal('Unavailable GK Position in this team', result.body.errors.message);
       } catch (e) {
         assert.ifError(e);
       }
