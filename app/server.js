@@ -11,7 +11,7 @@ const port = process.env.PORT || config.get('PORT');
 global.Helpers = require('./helpers/common');
 global.CustomStatusCode = require('./helpers/enum').customStatusCode;
 
-// require('../docs/swagger-docs')(app);
+// require('../docs/swagger/index')(app);
 
 app.use(expressValidator());
 
