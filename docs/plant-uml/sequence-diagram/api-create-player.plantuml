@@ -1,0 +1,18 @@
+@startuml create_player
+actor client
+control controller
+participant "player.action" as player_action
+database player
+autonumber
+
+client -> controller: post /v1/player
+activate controller
+
+    controller -> player_action: createPlayer()
+    activate player_action
+        player_action -> player: insert()
+        activate player
+        return player
+    return success insert
+return success insert
+@enduml

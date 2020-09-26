@@ -7,14 +7,19 @@
     "start": "node app/server.js",
     "start-dev": "./node_modules/.bin/nodemon app/server.js",
     "eslint-fix": "./node_modules/.bin/eslint --fix .",
-    "test": "./node_modules/mocha/bin/mocha --exit --reporter spec --timeout 12000 test/*.js"
+    "integration-test": "./node_modules/mocha/bin/mocha --recursive --exit --reporter spec --timeout 12000 __INTEGRATION_TEST__/*",
+    "test": "./node_modules/mocha/bin/mocha --recursive --exit --reporter spec --timeout 12000 __UNIT_TEST__/*",
+    "migrate": "sequelize db:migrate --config=./app/db/datasource/mysql.js",
+    "seed-positions": "./node_modules/.bin/sequelize db:seed --seed 01-seed-table-positions.js --seeders-path=app/db/seeds --config=./app/db/datasource/mysql.js --debug",
+    "seed-all": "./node_modules/.bin/sequelize db:seed:all --seeders-path=app/db/seeds --config=./app/db/datasource/mysql.js --debug",
+    "auto-generate-models": "sequelize-auto -h {host} -d {database}} -u {user} -x {password} -p {port}  --dialect mysql -o app/db/models/mysql -a script/additional-auto-generate.json -c script/config-auto-generate.json -C",
+    "build": "npm run migrate && npm run seed-all"
   },
   "keywords": [
     "express"
   ],
   "pre-commit": [
-    "eslint-fix",
-    "test"
+    "eslint-fix"
   ],
   "author": "fajar andriansyah",
   "license": "MIT",
@@ -22,6 +27,7 @@
     "basic-auth": "^2.0.1",
     "cuid": "^2.1.5",
     "dotenv": "^8.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "express": "^4.16.4",
     "express-enrouten": "^1.3.0",
     "express-mung": "^0.5.1",
@@ -30,15 +36,21 @@
     "express-winston": "^3.0.1",
     "extend": "^3.0.2",
     "lodash": "^4.17.11",
+    "moment": "^2.29.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
     "nconf": "^0.10.0",
     "qs": "^6.9.0",
+    "ramda": "^0.27.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
+    "sequelize": "^5.21.1",
+    "sequelize-cli": "^6.2.0",
+    "sequelize-paginate": "^1.1.6",
     "swagger-jsdoc": "^3.2.3",
     "swagger-ui-express": "^4.0.1",
     "winston": "^2.4.1",
-    "winston-daily-rotate-file": "^3.4.1",
-    "eslint-config-airbnb-base": "^13.1.0"
+    "winston-daily-rotate-file": "^3.4.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -54,6 +66,8 @@
     "pre-commit": "^1.2.2",
     "prettier": "^1.14.3",
     "stylelint": "^9.10.1",
-    "supertest": "^3.4.2"
+    "supertest": "^3.4.2",
+    "sequelize-auto": "^0.4.29",
+    "sinon": "^9.0.2"
   }
 }

@@ -41,24 +41,8 @@ const winstonLogger = new winston.Logger({
   data: {},
 */
 const logger = {
-  info: async (params) => {
-    try {
-      winstonLogger.info(JSON.stringify(params));
-      return true;
-    } catch (error) {
-      winstonLogger.error(JSON.stringify(params));
-      return error;
-    }
-  },
-  error: async (params) => {
-    try {
-      winstonLogger.error(JSON.stringify(params));
-      return true;
-    } catch (error) {
-      winstonLogger.error(JSON.stringify(params));
-      return error;
-    }
-  },
+  info: params => winstonLogger.info(JSON.stringify(params)),
+  error: params => winstonLogger.error(JSON.stringify(params)),
 };
 
 module.exports = logger;

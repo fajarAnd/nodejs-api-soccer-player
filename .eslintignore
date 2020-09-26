@@ -1,0 +1,5 @@
+#Auto Generate Models
+app/db/models/mysql/*.js
+
+#newRelic
+newrelic.js

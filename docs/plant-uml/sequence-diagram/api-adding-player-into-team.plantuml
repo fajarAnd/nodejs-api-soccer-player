@@ -1,0 +1,54 @@
+@startuml adding_player_into_team
+actor client
+control controller
+participant "player.action" as player_action
+participant "team.action" as team_action
+database player
+database team
+database team_slot
+autonumber
+
+client -> controller: POST /v1/team/enlist-player
+activate controller
+    controller -> player_action: getDetailPlayer()
+    activate player_action
+        player_action  -> player: findById()
+        activate player
+        return player detail
+    return player detail
+
+    controller -> team_action: getTeamSlot()
+    activate team_action
+    note right
+    By: - team_id,
+    - player_type,
+    - player_code
+    end note
+        team_action -> team_slot: findAll()
+        activate team_slot
+        return team slot
+    return team slot
+
+    alt available slot / teamslot null
+        controller -> player_action:  updatePlayer()
+        activate player_action
+            player_action -> player: update()
+            activate player
+            return success
+        return success
+
+        controller -> team_action: insertTeamSlot()
+        activate team_action
+            team_action -> team_slot: insert()
+            activate team_slot
+            return success
+        return success
+    return success
+    else unavilable slot
+    controller --> client: failed adding player
+    activate controller
+    end
+                    
+
+
+@enduml
