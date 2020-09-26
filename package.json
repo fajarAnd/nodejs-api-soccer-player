@@ -11,7 +11,9 @@
     "test": "./node_modules/mocha/bin/mocha --recursive --exit --reporter spec --timeout 12000 __UNIT_TEST__/*",
     "migrate": "sequelize db:migrate --config=./app/db/datasource/mysql.js",
     "seed-positions": "./node_modules/.bin/sequelize db:seed --seed 01-seed-table-positions.js --seeders-path=app/db/seeds --config=./app/db/datasource/mysql.js --debug",
-    "auto-generate-models": "sequelize-auto -h localhost -d soccer -u root -x admin123 -p 3306  --dialect mysql -o app/db/models/mysql -a script/additional-auto-generate.json -c script/config-auto-generate.json -C"
+    "seed-all": "./node_modules/.bin/sequelize db:seed:all --seeders-path=app/db/seeds --config=./app/db/datasource/mysql.js --debug",
+    "auto-generate-models": "sequelize-auto -h localhost -d soccer -u root -x admin123 -p 3306  --dialect mysql -o app/db/models/mysql -a script/additional-auto-generate.json -c script/config-auto-generate.json -C",
+    "build": "npm run migrate && npm run seed-all"
   },
   "keywords": [
     "express"
