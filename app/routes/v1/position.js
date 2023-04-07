@@ -1,4 +1,3 @@
-
 const positionController = require('../../controllers/position.controller');
 
 module.exports = (router) => {

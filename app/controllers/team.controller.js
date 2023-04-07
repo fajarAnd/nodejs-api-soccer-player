@@ -4,7 +4,6 @@ const teamAction = require('../actions/team.action');
 const playerAction = require('../actions/player.action');
 const logger = require('../libs/logger');
 
-
 const getAllTeam = async (req, res) => {
   const { requestId } = req;
   try {
@@ -42,22 +41,26 @@ const enlistPlayerIntoTeam = async (req, res) => {
     const { playerId, playerType, teamId } = body;
     const player = await playerAction.getDetailPlayer(playerId);
 
-    const payloadTeamSlot = pt => R.applySpec({
+    const payloadTeamSlot = (pt) => R.applySpec({
       teamId: R.prop('teamId'),
       positionCode: R.prop('positionCode'),
       playerType: R.always(pt),
     });
-    const whenPlayerNotFound = R.ifElse(R.isNil,
+    const whenPlayerNotFound = R.ifElse(
+R.isNil,
       () => { throw new Error('Player Not Found'); },
-      R.identity);
+      R.identity
+);
 
     const teamSlot = R.pipe(
       payloadTeamSlot(playerType),
       teamAction.getTeamSlot,
     );
-    const teamSlotUnavailable = R.ifElse(R.isNil,
+    const teamSlotUnavailable = R.ifElse(
+R.isNil,
       R.identity,
-      (pos) => { throw new Error(`Unavailable ${pos.positionCode} Position in this team`); });
+      (pos) => { throw new Error(`Unavailable ${pos.positionCode} Position in this team`); }
+);
 
     await R.pipe(
       whenPlayerNotFound,

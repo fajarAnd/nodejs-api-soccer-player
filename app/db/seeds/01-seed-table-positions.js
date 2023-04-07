@@ -1,7 +1,7 @@
 const tableName = 'position';
 
 module.exports = {
-  up: async queryInterface => queryInterface.bulkInsert(tableName, [
+  up: async (queryInterface) => queryInterface.bulkInsert(tableName, [
     {
       position_code: 'GK',
       name: 'Goalkeeper',
@@ -58,7 +58,7 @@ module.exports = {
       description: '(Central Centre Forward / Left (off-centre) Centre Forward / Right (off-centre)',
     },
   ]),
-  down: queryInterface => Promise.all([
+  down: (queryInterface) => Promise.all([
     queryInterface.bulkDelete(tableName, null, {}),
   ]),
 };

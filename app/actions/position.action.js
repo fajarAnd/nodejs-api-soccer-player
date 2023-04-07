@@ -4,7 +4,7 @@ const { paginate } = require('./common-query.action');
 
 const getAllPosition = R.pipe(
   paginate,
-  query => position.findAndCountAll(query),
+  (query) => position.findAndCountAll(query),
 );
 module.exports = {
   getAllPosition,
