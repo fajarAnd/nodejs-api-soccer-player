@@ -1,7 +1,7 @@
 const tableName = 'team_slot';
 
 module.exports = {
-  up: async queryInterface => queryInterface.bulkInsert(tableName, [
+  up: async (queryInterface) => queryInterface.bulkInsert(tableName, [
     {
       team_id: 1,
       position_code: 'GK',
@@ -23,7 +23,7 @@ module.exports = {
       player_type: 'main',
     },
   ]),
-  down: queryInterface => Promise.all([
+  down: (queryInterface) => Promise.all([
     queryInterface.bulkDelete(tableName, null, {}),
   ]),
 };

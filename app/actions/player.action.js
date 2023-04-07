@@ -6,7 +6,7 @@ const { sanitizeProp } = require('../helpers/common');
 
 const getAllPlayer = R.pipe(
   paginate,
-  query => player.findAndCountAll(query),
+  (query) => player.findAndCountAll(query),
 );
 
 const createPlayer = R.pipe(
@@ -18,10 +18,10 @@ const createPlayer = R.pipe(
     height: R.path(['height']),
     weight: R.path(['weight']),
   }),
-  payload => player.create(payload),
+  (payload) => player.create(payload),
 );
 
-const getDetailPlayer = playerId => player.findByPk(playerId, { raw: true });
+const getDetailPlayer = (playerId) => player.findByPk(playerId, { raw: true });
 
 const queryUpdate = R.applySpec({
   where: {
@@ -46,7 +46,7 @@ const sanitizer = R.tap(
 const updatePlayerByPk = R.pipe(
   queryUpdate,
   sanitizer,
-  payload => player.update(
+  (payload) => player.update(
     R.prop('values', payload),
     { where: R.path(['where'], payload) },
   ),

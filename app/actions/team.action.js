@@ -4,7 +4,7 @@ const { paginate } = require('./common-query.action');
 
 const getAllTeam = R.pipe(
   paginate,
-  query => team.findAndCountAll(query),
+  (query) => team.findAndCountAll(query),
 );
 
 const createTeam = R.pipe(
@@ -12,7 +12,7 @@ const createTeam = R.pipe(
     name: R.prop('name'),
     description: R.path(['description']),
   }),
-  payload => team.create(payload),
+  (payload) => team.create(payload),
 );
 
 const getTeamSlot = R.pipe(
@@ -24,7 +24,7 @@ const getTeamSlot = R.pipe(
     },
     raw: R.T,
   }),
-  query => teamSlot.findOne(query),
+  (query) => teamSlot.findOne(query),
 );
 
 const createTeamSlot = R.pipe(
@@ -33,10 +33,10 @@ const createTeamSlot = R.pipe(
     positionCode: R.prop('positionCode'),
     playerType: R.prop('playerType'),
   }),
-  payload => teamSlot.create(payload),
+  (payload) => teamSlot.create(payload),
 );
 
-const queryTeamIncludePlayer = param => ({
+const queryTeamIncludePlayer = (param) => ({
   where: {
     teamId: R.prop('teamId', param),
   },
@@ -46,7 +46,7 @@ const queryTeamIncludePlayer = param => ({
 });
 const getTeamIncludePlayer = R.pipe(
   queryTeamIncludePlayer,
-  query => team.findOne(query),
+  (query) => team.findOne(query),
 );
 
 module.exports = {

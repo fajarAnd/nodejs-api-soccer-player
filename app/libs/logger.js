@@ -41,8 +41,8 @@ const winstonLogger = new winston.Logger({
   data: {},
 */
 const logger = {
-  info: params => winstonLogger.info(JSON.stringify(params)),
-  error: params => winstonLogger.error(JSON.stringify(params)),
+  info: (params) => winstonLogger.info(JSON.stringify(params)),
+  error: (params) => winstonLogger.error(JSON.stringify(params)),
 };
 
 module.exports = logger;

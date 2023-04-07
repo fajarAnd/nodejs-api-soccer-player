@@ -2,7 +2,6 @@
 const positionAction = require('../actions/position.action');
 const logger = require('../libs/logger');
 
-
 const getAllPositions = async (req, res) => {
   const { requestId } = req;
   try {

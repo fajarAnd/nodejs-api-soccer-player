@@ -1,7 +1,7 @@
 const tableName = 'team';
 
 module.exports = {
-  up: async queryInterface => queryInterface.bulkInsert(tableName, [
+  up: async (queryInterface) => queryInterface.bulkInsert(tableName, [
     {
       name: 'Real Madrid',
       description: '',
@@ -23,7 +23,7 @@ module.exports = {
       description: '',
     },
   ]),
-  down: queryInterface => Promise.all([
+  down: (queryInterface) => Promise.all([
     queryInterface.bulkDelete(tableName, null, {}),
   ]),
 };

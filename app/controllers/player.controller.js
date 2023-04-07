@@ -2,7 +2,6 @@
 const playerAction = require('../actions/player.action');
 const logger = require('../libs/logger');
 
-
 const getAllPlayers = async (req, res) => {
   const { requestId } = req;
   try {
